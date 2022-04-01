@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="CourseWorkApp">
+        <wb-resource deploy-path="/" source-path="/ejbModule" tag="defaultRootSource"/>
+        <property name="java-output-path" value="/CourseWorkApp/build/classes"/>
+        <property name="ClientProject" value="CourseWorkAppClient"/>
+        <property name="ClientJARURI" value="CourseWorkAppClient.jar"/>
+    </wb-module>
+</project-modules>

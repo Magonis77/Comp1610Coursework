@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+        
+    <wb-module deploy-name="CourseWorkAppEJBEAR">
+                
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+                
+        <dependent-module archiveName="CourseWorkApp.jar" deploy-path="/" handle="module:/resource/CourseWorkApp/CourseWorkApp">
+                        
+            <dependent-object/>
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                
+        <dependent-module archiveName="CourseWorkAppClient.jar" deploy-path="/" handle="module:/resource/CourseWorkAppClient/CourseWorkAppClient">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                
+        <dependent-module archiveName="CourseWorkAppWeb.war" deploy-path="/" handle="module:/resource/CourseWorkAppWeb/CourseWorkAppWeb">
+                        
+            <dependent-object/>
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                
+        <dependent-module archiveName="CourseWorkAppWebRemote.jar" deploy-path="/" handle="module:/resource/CourseWorkAppWebRemote/CourseWorkAppWebRemote">
+                        
+            <dependent-object/>
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+        <dependent-module archiveName="CourseWorkMDB.jar" deploy-path="/" handle="module:/resource/CourseWorkMDB/CourseWorkMDB">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="CourseWorkProducer.war" deploy-path="/" handle="module:/resource/CourseWorkProducer/CourseWorkProducer">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="CourseWorkConsumer.war" deploy-path="/" handle="module:/resource/CourseWorkConsumer/CourseWorkConsumer">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+            
+    </wb-module>
+    
+</project-modules>
