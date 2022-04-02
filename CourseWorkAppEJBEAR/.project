@@ -7,9 +7,6 @@
 		<project>CourseWorkAppClient</project>
 		<project>CourseWorkAppWeb</project>
 		<project>CourseWorkAppWebRemote</project>
-		<project>CourseWorkMDB</project>
-		<project>CourseWorkProducer</project>
-		<project>CourseWorkConsumer</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
