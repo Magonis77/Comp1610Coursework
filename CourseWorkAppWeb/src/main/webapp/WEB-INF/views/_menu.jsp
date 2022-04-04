@@ -5,5 +5,6 @@
 
 <a href="index.html">Home </a>|  
 <a href='LRLServlet?action=showAllUsers'>Show User List</a><br/>
-   
+<a href='HolidaysServlet?action=getallholidays'>Holiday List</a><br/>
+<a href='requestHoliday.jsp'>Request Holiday</a><br/>
 </div>  

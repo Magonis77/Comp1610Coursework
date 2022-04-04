@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faceted-project>
-  <runtime name="CW"/>
+  <runtime name="WildFly 24.0 Runtime 3"/>
   <fixed facet="jst.appclient"/>
   <fixed facet="java"/>
   <installed facet="java" version="16"/>

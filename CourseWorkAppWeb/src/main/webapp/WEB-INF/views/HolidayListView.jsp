@@ -42,7 +42,7 @@
        </c:forEach>
     </table>
 
-    <a href="createuser" >Create User</a>
+    <a href="requestHoliday.jsp" >Create User</a>
 
 
  </body>

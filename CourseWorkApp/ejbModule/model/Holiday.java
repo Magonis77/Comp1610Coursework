@@ -2,6 +2,8 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,6 +39,7 @@ public class Holiday implements Serializable {
 	private List<User> users;
 
 	public Holiday() {
+		this.users = new ArrayList<User>();
 	}
 
 	public int getId() {

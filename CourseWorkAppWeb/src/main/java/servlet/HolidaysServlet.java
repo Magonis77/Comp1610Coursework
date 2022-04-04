@@ -2,6 +2,11 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Period;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -60,6 +65,34 @@ public class HolidaysServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 		break;
+		case "Requestholiday":{
+			try {
+			String id = request.getParameter("id");
+			int uid = Integer.parseInt(id);
+			String start = request.getParameter("startdate");
+			String end = request.getParameter("enddate");
+			
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		
+				Date startdate = dateFormat.parse(end);
+				Date enddate = dateFormat.parse(start);
+				long diff = startdate.getTime() - enddate.getTime();
+				long diffDays = diff / (24 * 60 * 60 * 1000);
+				int lenght = (int)diffDays;
+				String status = "In Review";
+				
+				hDTO.requestholiday(uid,startdate,enddate,lenght, status);
+				
+				tableStr +=	"<br/><strong>Holiday Requested</strong>";
+				tableStr += "</table>";
+				tableStr += "<a href=index.html>Home</a>";
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		break;
 		default:
 			break;}
 		response.setContentType("text/html;charset=UTF-8");
@@ -69,12 +102,16 @@ public class HolidaysServlet extends HttpServlet {
 		out.println("<head>");
 		out.println("<title> CourseWork App Holiday System </title>");
 		out.println("</head>");
-		
 		out.println("<body>");
 		out.println(tableStr);
 		out.println("</body>");
 		out.println("</html>");
 		out.close();
+	}
+
+	private HolidayDTORemote requestholiday(int uid, Date startdate, Date enddate, int lenght) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/**
