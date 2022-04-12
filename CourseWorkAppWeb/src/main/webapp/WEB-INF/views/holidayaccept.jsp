@@ -14,7 +14,7 @@
    
     <h3>Holiday Accepted</h3>
 
-   <a href='HolidaysServlet?action=getallholidays'>Holiday List</a><br/>
+   <a href='HolidaysServlet?action=getalloutstandingholidays'>Holiday List</a><br/>
    
    
  </body>

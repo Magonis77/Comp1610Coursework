@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import model.Holiday;
 import model.HolidaysDTO;
 import model.User;
+import model.UserDTO;
 
 /**
  * Session Bean implementation class HolidayDTO
@@ -65,6 +66,29 @@ public class HolidayDTO implements HolidayDTORemote {
 	   h.setStatus(status);
 	   em.persist(h);
 	   
+}
+
+public List<HolidaysDTO> allUserHolidays(int userID) {
+	List<Holiday> queryResults = em.createNamedQuery("Holiday.findHolidaysByUserID", Holiday.class)
+			.setParameter("id", userID)
+			.getResultList();
+	List<HolidaysDTO> listResult = new ArrayList<HolidaysDTO>();
+	
+	queryResults.forEach(h ->
+		listResult.add(new HolidaysDTO(h.getId(), h.getEnd_Date(),h.getStatus(),h.getLenght(),h.getStart_Date())));
+	return listResult;
+}
+
+@Override
+public List<HolidaysDTO> allOutstandingHolidays(String status) {
+	List<Holiday> queryResults = em.createNamedQuery("Holiday.findOutstandingHolidays", Holiday.class)
+			.setParameter("status", status)
+			.getResultList();
+	List<HolidaysDTO> listResult = new ArrayList<HolidaysDTO>();
+	
+	queryResults.forEach(h ->
+		listResult.add(new HolidaysDTO(h.getId(), h.getEnd_Date(),h.getStatus(),h.getLenght(),h.getStart_Date())));
+	return listResult;
 }
 
 }

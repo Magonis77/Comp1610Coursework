@@ -1,32 +1,28 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 
-import javax.ejb.EJB;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import dao.HolidayDTORemote;
-import model.HolidaysDTO;
+import consumer.AdsConsumer;
+import consumer.ReaderConsumer;
 
 /**
- * Servlet implementation class holidayaccept
+ * Servlet implementation class CourseWorkConsumerServlet
  */
-@WebServlet("/holidayaccept")
-public class holidayaccept extends HttpServlet {
+@WebServlet("/CourseWorkConsumerServlet")
+public class CourseWorkConsumerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	@EJB
-	private HolidayDTORemote hDTO; 
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public holidayaccept() {
+    public CourseWorkConsumerServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,18 +31,20 @@ public class holidayaccept extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String code = (String) request.getParameter("code");
-		
-		int ID = Integer.parseInt(code);
-		
-		hDTO.acceptholiday(ID);
-		String Status = "Outstanding";
-		List<HolidaysDTO> holidaylist = hDTO.allOutstandingHolidays(Status);
-		HttpSession session = request.getSession();
-		session.setAttribute("holidaylist", holidaylist);
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/OutstandingHolidaysView.jsp");
-		dispatcher.forward(request, response);
+		String tableStr = new String();
+		AdsConsumer ads = new AdsConsumer();
+		ReaderConsumer reader = new ReaderConsumer();
+		PrintWriter out = response.getWriter();
+		out.println("<html>");
+		out.println("<head>");
+		out.println("<title>Holiday Request App</title>");
+		out.println("<head>");
+		out.println("Two consumers were started and waiting to consume messages");
+		out.println("<a href=index.html>Home</a>");
+		out.println("<body>");
+		out.println("</body>");
+		out.println("</html>");
+		out.close();		
 	}
 
 	/**

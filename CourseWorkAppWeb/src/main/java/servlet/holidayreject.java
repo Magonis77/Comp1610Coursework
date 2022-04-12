@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -9,8 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.HolidayDTORemote;
+import model.HolidaysDTO;
 
 /**
  * Servlet implementation class holidayreject
@@ -37,9 +40,12 @@ public class holidayreject extends HttpServlet {
 		int ID = Integer.parseInt(code);
 		
 		hDTO.rejectholiday(ID);
+		String Status = "Outstanding";
+		List<HolidaysDTO> holidaylist = hDTO.allOutstandingHolidays(Status);
+		HttpSession session = request.getSession();
+		session.setAttribute("holidaylist", holidaylist);
 		
-		RequestDispatcher dispatcher = request.getServletContext()
-				.getRequestDispatcher("/WEB-INF/views/holidayreject.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/OutstandingHolidaysView.jsp");
 		dispatcher.forward(request, response);
 	}
 

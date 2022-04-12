@@ -2,8 +2,6 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +11,14 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+@NamedQueries(
+		{
+			@NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
+@NamedQuery(name="User.findHolidaysByUserID", query="Select u from User u join fetch u.holidays Where u.id=:id"),
+
+
+		}
+		)
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -34,6 +39,10 @@ public class User implements Serializable {
 
 	private String username;
 
+	//bi-directional many-to-one association to Holiday
+	@OneToMany(mappedBy="user")
+	private List<Holiday> holidays;
+
 	//bi-directional many-to-one association to Department
 	@ManyToOne
 	private Department department;
@@ -43,21 +52,7 @@ public class User implements Serializable {
 	@JoinColumn(name="Role_ID")
 	private Drole drole;
 
-	//bi-directional many-to-many association to Holiday
-	@ManyToMany
-	@JoinTable(
-		name="user_holidays"
-		, joinColumns={
-			@JoinColumn(name="Users_ID")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="Holidays_ID")
-			}
-		)
-	private List<Holiday> holidays;
-
 	public User() {
-		this.holidays = new ArrayList<Holiday>();
 	}
 
 	public int getId() {
@@ -116,6 +111,28 @@ public class User implements Serializable {
 		this.username = username;
 	}
 
+	public List<Holiday> getHolidays() {
+		return this.holidays;
+	}
+
+	public void setHolidays(List<Holiday> holidays) {
+		this.holidays = holidays;
+	}
+
+	public Holiday addHoliday(Holiday holiday) {
+		getHolidays().add(holiday);
+		holiday.setUser(this);
+
+		return holiday;
+	}
+
+	public Holiday removeHoliday(Holiday holiday) {
+		getHolidays().remove(holiday);
+		holiday.setUser(null);
+
+		return holiday;
+	}
+
 	public Department getDepartment() {
 		return this.department;
 	}
@@ -130,14 +147,6 @@ public class User implements Serializable {
 
 	public void setDrole(Drole drole) {
 		this.drole = drole;
-	}
-
-	public List<Holiday> getHolidays() {
-		return this.holidays;
-	}
-
-	public void setHolidays(List<Holiday> holidays) {
-		this.holidays = holidays;
 	}
 
 }

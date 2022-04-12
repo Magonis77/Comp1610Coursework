@@ -104,4 +104,7 @@ public class LRLDTO implements LRLDTORemote {
 		em.persist(u);
 		
 	}
+
+
+	
 }

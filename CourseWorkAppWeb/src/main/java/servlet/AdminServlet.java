@@ -2,11 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.Period;
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -26,12 +21,11 @@ import model.HolidaysDTO;
 import model.UserDTO;
 
 /**
- * Servlet implementation class HolidaysServlet
+ * Servlet implementation class AdminServlet
  */
-@WebServlet("/HolidaysServlet")
-public class HolidaysServlet extends HttpServlet {
+@WebServlet("/AdminServlet")
+public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
 	@EJB
 	private LRLDTORemote lrlDTO;
 	@EJB
@@ -43,7 +37,7 @@ public class HolidaysServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HolidaysServlet() {
+    public AdminServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -55,36 +49,13 @@ public class HolidaysServlet extends HttpServlet {
 		String param_action = request.getParameter("action");
 		String tableStr = new String();
 		switch(param_action) {
-		case "getallholidays":
-		{
-			List<UserDTO> userlist = lrlDTO.allUsers();
-			request.setAttribute("userlist", userlist);
-			List<HolidaysDTO> list = hDTO.allHolidays();
-			request.setAttribute("holidaylist", list);
-			
-			// Forward to /WEB-INF/views/productListView.jsp
-			RequestDispatcher dispatcher = request.getServletContext()
-					.getRequestDispatcher("/WEB-INF/views/HolidayListView.jsp");
-			dispatcher.forward(request, response);
-		}
-		break;
-		case "getalloutstandingholidays":{
-			String Status = "Outstanding";
-			List<HolidaysDTO> holidaylist = hDTO.allOutstandingHolidays(Status);
-			HttpSession session = request.getSession();
-			session.setAttribute("holidaylist", holidaylist);
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/OutstandingHolidaysView.jsp");
-			dispatcher.forward(request, response);
-		}
-		break;
 		case "allUsers":{
 			List<UserDTO> userlist = lrlDTO.allUsers();
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("userlist", userlist);
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("Holidaybyuser.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("HolidayByUserA.jsp");
 			dispatcher.forward(request, response);
 		}
 		break;
@@ -95,31 +66,28 @@ public class HolidaysServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("holidaylist", holidaylist);
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/UserHolidayView.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/UserHolidayViewA.jsp");
 			dispatcher.forward(request, response);
 		}
+	
+	break;
+	default:
 		break;
-		default:
-			break;}
-		response.setContentType("text/html;charset=UTF-8");
-		
-		PrintWriter out = response.getWriter();
-		out.println("<html>");
-		out.println("<head>");
-		out.println("<title> CourseWork App Holiday System </title>");
-		out.println("</head>");
-		out.println("<body>");
-		out.println(tableStr);
-		out.println("</body>");
-		out.println("</html>");
-		out.close();
-	}
+		}
+	response.setContentType("text/html;charset=UTF-8");
+	
+	PrintWriter out = response.getWriter();
+	out.println("<html>");
+	out.println("<head>");
+	out.println("<title> CourseWork App Holiday System </title>");
+	out.println("</head>");
+	out.println("<body>");
+	out.println(tableStr);
+	out.println("</body>");
+	out.println("</html>");
+	out.close();
 
-	private HolidayDTORemote requestholiday(int uid, Date startdate, Date enddate, int lenght) {
-		// TODO Auto-generated method stub
-		return null;
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

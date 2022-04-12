@@ -2,10 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 
 /**
@@ -14,7 +11,15 @@ import java.util.List;
  */
 @Entity
 @Table(name="holidays")
-@NamedQuery(name="Holiday.findAll", query="SELECT h FROM Holiday h")
+@NamedQueries(
+		{
+@NamedQuery(name="Holiday.findAll", query="SELECT h FROM Holiday h"),
+@NamedQuery(name="Holiday.findHolidaysByUserID", query="Select h from Holiday h Where h.user.id=:id"),
+@NamedQuery(name="Holiday.findOutstandingHolidays", query="Select h from Holiday h Where h.status=:status")
+
+		}
+		)
+
 public class Holiday implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -34,12 +39,11 @@ public class Holiday implements Serializable {
 
 	private String status;
 
-	//bi-directional many-to-many association to User
-	@ManyToMany(mappedBy="holidays")
-	private List<User> users;
+	//bi-directional many-to-one association to User
+	@ManyToOne
+	private User user;
 
 	public Holiday() {
-		this.users = new ArrayList<User>();
 	}
 
 	public int getId() {
@@ -82,12 +86,12 @@ public class Holiday implements Serializable {
 		this.status = status;
 	}
 
-	public List<User> getUsers() {
-		return this.users;
+	public User getUser() {
+		return this.user;
 	}
 
-	public void setUsers(List<User> users) {
-		this.users = users;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

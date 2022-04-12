@@ -1,37 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
-    
-<%@ page import="model.UserDTO"%>
-<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
  <head>
     <meta charset="UTF-8">
-    <title>Holiday List</title>
+    <title>Holiday List by user </title>
  </head>
  <body>
-<%
-if (request.getParameter("cbxUser") != null) {
-	
-			response.sendRedirect("AdminServlet?action=HolidaysByUser" + "&UserID=" + 
-									request.getParameter("cbxUser"));
-											
-											
-}	%>
-<%
-	@SuppressWarnings("unchecked")
-	List<UserDTO> userlist = (List<UserDTO>) session.getAttribute("userlist");
-	
-	%>
+
     <jsp:include page="_menu.jsp"></jsp:include>
 
-    <h3>Holiday List</h3>
+    <h3>Holiday List by user</h3>
 
 
     <table border="1" cellpadding="5" cellspacing="1" >
        <tr>
       	  <th>Holiday ID</th>
+      	  <th>username</th>
           <th>Start Date</th>
           <th>End Date</th>
           <th>Lenght</th>
@@ -41,22 +27,16 @@ if (request.getParameter("cbxUser") != null) {
           <tr>
        <c:forEach items="${holidaylist}" var="holiday" >
              <td>${holiday.id}</td>
+<td></td>
              <td>${holiday.start_Date}</td>
              <td>${holiday.end_Date}</td>
              <td>${holiday.lenght}</td>
              <td>${holiday.status}</td>
+       
           </tr>
        </c:forEach>
     </table>
-<form action="HolidayByUserA.jsp" method = "post">
-         Select a User:&nbsp; <select name="cbxUser" style="width: 200px">
-			<c:forEach items="${userlist}" var="user">
-				<option value="${user.id}">${user.username}</option>
-			</c:forEach>
-			
-		</select>
-		 <input type = "submit" value = "Select" />
-      </form>
+
 
 
  </body>
