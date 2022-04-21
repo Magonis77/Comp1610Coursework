@@ -4,14 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Book Store Client - Start Consumers</title>
+<title>Insert title here</title>
 </head>
 <body>
-<strong>Welcome to Book Consumer</strong>
-<br/>
-<br/>
-
-<a href=CourseWorkConsumerServlet>Start Consumers</a><br/>
-
+<h1>Welcome ${users.username}</h1>
+  <jsp:include page="/WEB-INF/views/_menu.jsp"></jsp:include>
 </body>
 </html>

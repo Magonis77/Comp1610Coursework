@@ -6,8 +6,12 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -71,9 +75,10 @@ public class HolidaysServlet extends HttpServlet {
 		case "getalloutstandingholidays":{
 			String Status = "Outstanding";
 			List<HolidaysDTO> holidaylist = hDTO.allOutstandingHolidays(Status);
+				
 			HttpSession session = request.getSession();
 			session.setAttribute("holidaylist", holidaylist);
-			
+
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/OutstandingHolidaysView.jsp");
 			dispatcher.forward(request, response);
 		}

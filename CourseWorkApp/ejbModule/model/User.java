@@ -15,8 +15,7 @@ import java.util.List;
 		{
 			@NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
 @NamedQuery(name="User.findHolidaysByUserID", query="Select u from User u join fetch u.holidays Where u.id=:id"),
-
-
+@NamedQuery(name="User.findusersbydepartmentid", query="Select u from User u Where u.department=:department")
 		}
 		)
 public class User implements Serializable {
@@ -36,6 +35,8 @@ public class User implements Serializable {
 	private String lastname;
 
 	private String password;
+
+	private String status;
 
 	private String username;
 
@@ -101,6 +102,14 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getUsername() {

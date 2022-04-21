@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert a Book</title>
+<title>Request a Holiday</title>
 </head>
 <body>
-
-<strong>Book Producer to put a new book title into the Queue channel</strong>
+  <jsp:include page="/WEB-INF/views/_menu.jsp"></jsp:include>
+<strong>Request a holiday below</strong>
 <br/>
 <br/>
 

@@ -84,6 +84,18 @@ public class LRLDTO implements LRLDTORemote {
 		return null;
     	
     }
+    
+    public List<UserDTO> finduserbyholiday(int holidayID){
+    	List<User> user = em.createNamedQuery("User.findUserByHolidayID", User.class)
+    			.setParameter("id", holidayID)
+    			.getResultList();
+    	List<UserDTO> listResult = new ArrayList<UserDTO>();
+    	
+    	user.forEach(u ->
+    		listResult.add(new UserDTO(u.getId(),u.getUsername(), u.getFirstname(), u.getLastname(), u.getGender(), u.getJoinDate(), u.getPassword())));
+    	return listResult;
+    	
+    }
 
 	public void amendUser(String username, String password, String name, String lastName, String gender,
 			int idRole, int idDepartment, int userID) {

@@ -14,4 +14,5 @@ public interface LRLDTORemote {
 	public UserDTO getuserinfobyUserID(int userID);
 	public void amendUser(String username, String password, String name, String lastName, String gender, int idRole, int idDepartment, int userID);
 	public UserDTO removeuser(int iD);
+	public List<UserDTO> finduserbyholiday(int holidayID);
 }

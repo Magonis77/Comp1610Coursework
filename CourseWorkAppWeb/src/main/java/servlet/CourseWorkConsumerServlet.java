@@ -39,8 +39,8 @@ public class CourseWorkConsumerServlet extends HttpServlet {
 		out.println("<head>");
 		out.println("<title>Holiday Request App</title>");
 		out.println("<head>");
+		out.println("<a href=index.jsp>Home</a></br>");
 		out.println("Two consumers were started and waiting to consume messages");
-		out.println("<a href=index.html>Home</a>");
 		out.println("<body>");
 		out.println("</body>");
 		out.println("</html>");

@@ -35,7 +35,7 @@ public class HolidayDTO implements HolidayDTORemote {
     	List<HolidaysDTO> listResult = new ArrayList<HolidaysDTO>();
     	
     	queryResults.forEach(h ->
-    		listResult.add(new HolidaysDTO(h.getId(), h.getEnd_Date(),h.getStatus(),h.getLenght(),h.getStart_Date())));
+    		listResult.add(new HolidaysDTO(h.getId(), h.getEnd_Date(),h.getStatus(),h.getLenght(),h.getStart_Date(),h.getDate_Decision_Made(),h.getRequest_Made_Date(), h.getOverall_Length(),h.getPeak_Time(),h.getConstraints())));
     	return listResult;
 	}
 	
@@ -49,11 +49,18 @@ public class HolidayDTO implements HolidayDTORemote {
    public void acceptholiday(int iD) {
 	Holiday h = em.find(Holiday.class,iD);
 	h.setStatus("Accepted");
+	int approveddays = h.getOverall_Length();
+	int newdays = approveddays + h.getLenght();
+	h.setOverall_Length(newdays);
+	Date date = new Date(); 
+	h.setDate_Decision_Made(date);
 	em.persist(h);
    }
    
    public void rejectholiday(int iD) {
 	Holiday h = em.find(Holiday.class,iD);
+	Date date = new Date(); 
+	h.setDate_Decision_Made(date);
 	h.setStatus("Rejected");
 	em.persist(h);
    }
@@ -75,9 +82,33 @@ public List<HolidaysDTO> allUserHolidays(int userID) {
 	List<HolidaysDTO> listResult = new ArrayList<HolidaysDTO>();
 	
 	queryResults.forEach(h ->
-		listResult.add(new HolidaysDTO(h.getId(), h.getEnd_Date(),h.getStatus(),h.getLenght(),h.getStart_Date())));
+		listResult.add(new HolidaysDTO(h.getId(), h.getEnd_Date(),h.getStatus(),h.getLenght(),h.getStart_Date(),h.getDate_Decision_Made(),h.getRequest_Made_Date(), h.getOverall_Length(),h.getPeak_Time(),h.getConstraints())));
 	return listResult;
 }
+
+public List<HolidaysDTO> countuserlenght(int userID) {
+	List<Holiday> queryResults = em.createNamedQuery("Holiday.findHolidaysByUserID", Holiday.class)
+			.setParameter("id", userID)
+			.getResultList();
+	
+	List<HolidaysDTO> listResult = new ArrayList<HolidaysDTO>();
+	
+	queryResults.forEach(h ->
+		listResult.add(new HolidaysDTO(h.getLenght())));
+	return listResult;
+}
+public List<HolidaysDTO> countuseracceptedlenght(int userID) {
+	List<Holiday> queryResults = em.createNamedQuery("Holiday.findHolidaysByUserID", Holiday.class)
+			.setParameter("id", userID)
+			.getResultList();
+	
+	List<HolidaysDTO> listResult = new ArrayList<HolidaysDTO>();
+	
+	queryResults.forEach(h ->
+		listResult.add(new HolidaysDTO(h.getOverall_Length())));
+	return listResult;
+}
+
 
 @Override
 public List<HolidaysDTO> allOutstandingHolidays(String status) {
@@ -85,9 +116,8 @@ public List<HolidaysDTO> allOutstandingHolidays(String status) {
 			.setParameter("status", status)
 			.getResultList();
 	List<HolidaysDTO> listResult = new ArrayList<HolidaysDTO>();
-	
 	queryResults.forEach(h ->
-		listResult.add(new HolidaysDTO(h.getId(), h.getEnd_Date(),h.getStatus(),h.getLenght(),h.getStart_Date())));
+		listResult.add(new HolidaysDTO(h.getId(), h.getEnd_Date(),h.getStatus(),h.getLenght(),h.getStart_Date(),h.getDate_Decision_Made(),h.getRequest_Made_Date(),h.getOverall_Length(),h.getPeak_Time(),h.getConstraints())));
 	return listResult;
 }
 

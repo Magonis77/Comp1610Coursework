@@ -69,8 +69,8 @@ public class CourseWorkProducerServlet extends HttpServlet {
 				
 				connect.close();
 				
-				tableStr += " <br/><strong>New Holiday request was sent to the MDB</strong>";
-				tableStr += "<a href=index.html>Home</a>";
+				tableStr += " <br/><strong>New Holiday request was sent to the MDB</strong></br>";
+				tableStr += "<a href=index.jsp>Home</a>";
 			}
 			break;
 			
