@@ -35,6 +35,7 @@ public class loginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    //gets the information from JSP file and passes to the DTO then redirects
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String tableStr = new String();
 		String databaseUsername = "";
@@ -49,7 +50,7 @@ public class loginServlet extends HttpServlet {
 			databaseUsername = String.valueOf(userlist.get(i).getUsername());
 			databasePassword = String.valueOf(userlist.get(i).getPassword());
 			if (username.equals(databaseUsername) && password.equals(databasePassword)) {
-				request.setAttribute("user", userlist);
+				request.setAttribute("username", username);
 				response.sendRedirect("index.jsp");
 				is = 1;
 				break;

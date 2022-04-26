@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>CourseWork Holiday App</title>
 </head>
 <body>
-<h1>Welcome ${users.username}</h1>
+<h1>Welcome ${username}</h1>
   <jsp:include page="/WEB-INF/views/_menu.jsp"></jsp:include>
 </body>
 </html>

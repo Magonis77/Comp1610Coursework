@@ -11,12 +11,12 @@
 Login:
 </h1> 
 <hr/>  
-    <jsp:include page="/WEB-INF/views/_menu.jsp"></jsp:include>
+    <jsp:include page="/WEB-INF/views/_menunologin.jsp"></jsp:include>
 <h3>Login Form</h3>  
 	<form method="GET">
 		Username: <input type="text" name="username"> <br />
 		Password: <input type="password" name="password"> <br /> 
-		<input type="submit" value="Add" />
+		<input type="submit" value="Login" />
 	</form>
 
 	<%

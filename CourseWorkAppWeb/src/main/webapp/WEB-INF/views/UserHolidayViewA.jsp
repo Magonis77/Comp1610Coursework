@@ -5,13 +5,13 @@
 <html>
  <head>
     <meta charset="UTF-8">
-    <title>Holiday List by user </title>
+    <title>Holiday List by Employee </title>
  </head>
  <body>
 
 <a href='HolidaysServlet?action=getallholidays'>Back</a><br/>
 
-    <h3>Holiday List by user</h3>
+    <h3>Holiday List by Employee</h3>
 
 
      <table border="1" cellpadding="5" cellspacing="1" >

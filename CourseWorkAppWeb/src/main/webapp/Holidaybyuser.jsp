@@ -12,7 +12,7 @@
 <title>Employee holidays</title>
 </head>
 <body>
-  <jsp:include page="/WEB-INF/views/_menu.jsp"></jsp:include>
+ <jsp:include page="/WEB-INF/views/_menunologin.jsp"></jsp:include>
 <%
 if (request.getParameter("cbxUser") != null) {
 	
@@ -29,7 +29,7 @@ if (request.getParameter("cbxUser") != null) {
 
 	<form action="Holidaybyuser.jsp" method = "post">
 
-         Select a User:&nbsp; <select name="cbxUser" style="width: 200px">
+         Select an Employee:&nbsp; <select name="cbxUser" style="width: 200px">
 			<c:forEach items="${userlist}" var="user">
 				<option value="${user.id}">${user.username}</option>
 			</c:forEach>

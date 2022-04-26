@@ -15,7 +15,8 @@ import java.util.List;
 		{
 			@NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
 @NamedQuery(name="User.findHolidaysByUserID", query="Select u from User u join fetch u.holidays Where u.id=:id"),
-@NamedQuery(name="User.findusersbydepartmentid", query="Select u from User u Where u.department=:department")
+@NamedQuery(name="User.findusersbydepartmentid", query="Select u from User u Where u.department=:department"),
+@NamedQuery(name="User.findusersbydepartmentidandrole", query="Select u from User u Where u.department=:department and u.drole.role=:role")
 		}
 		)
 public class User implements Serializable {

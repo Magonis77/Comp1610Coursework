@@ -34,6 +34,7 @@ public class LRLDTO implements LRLDTORemote {
         // TODO Auto-generated constructor stub
     }
 
+    //Creating a new user in the database
 	@Override
 	public void insertUser(String username, String password, String name, String LastName, String Gender, Date JoinDate, int Roleid, int Departmentid) {
 		User u = new User();
@@ -45,12 +46,13 @@ public class LRLDTO implements LRLDTORemote {
 		u.setLastname(LastName);
 		u.setGender(Gender);
 		u.setJoinDate(JoinDate);
+		u.setStatus("Working");
 		u.setDrole(dr);
 		u.setDepartment(dp);
 		em.persist(u);
 		
 	}
-
+//gets the list of all employees
 	@Override
 	public List<UserDTO> allUsers() {
 		List<User> queryResults = em.createQuery("SELECT u FROM User u", User.class).getResultList();
@@ -60,12 +62,8 @@ public class LRLDTO implements LRLDTORemote {
     		listResult.add(new UserDTO(u.getId(),u.getUsername(), u.getFirstname(), u.getLastname(), u.getGender(), u.getJoinDate(), u.getPassword())));
     	return listResult;
 	}
-	   
-    public void updateAUserSimple(String user, String pass)
-    {
-    	User u = em.find(User.class, user);
-    	
-    }
+
+//	//get user info by user ID.
     public UserDTO getuserinfobyUserID(int userid)
     {
     	User user = em.find(User.class, userid);
@@ -77,6 +75,7 @@ public class LRLDTO implements LRLDTORemote {
     	return u;
     }
     
+	//removes employee
     public UserDTO removeuser(int userid) {
     	
     	Query queryResult = em.createNativeQuery("DELETE FROM USER WHERE ID = " + userid);
@@ -85,6 +84,7 @@ public class LRLDTO implements LRLDTORemote {
     	
     }
     
+    //finds user by holiday id
     public List<UserDTO> finduserbyholiday(int holidayID){
     	List<User> user = em.createNamedQuery("User.findUserByHolidayID", User.class)
     			.setParameter("id", holidayID)
@@ -97,6 +97,7 @@ public class LRLDTO implements LRLDTORemote {
     	
     }
 
+    //amends employee
 	public void amendUser(String username, String password, String name, String lastName, String gender,
 			int idRole, int idDepartment, int userID) {
 		User u = em.find(User.class, userID);
@@ -111,6 +112,7 @@ public class LRLDTO implements LRLDTORemote {
 		u.setFirstname(name);
 		u.setLastname(lastName);
 		u.setGender(gender);
+		u.setStatus("Working");
 		u.setDrole(dr);
 		u.setDepartment(dp);
 		em.persist(u);

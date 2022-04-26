@@ -5,16 +5,16 @@
 <html>
  <head>
     <meta charset="UTF-8">
-    <title>Delete User</title>
+    <title>Employee Delete</title>
  </head>
 
  <body>
-      <jsp:include page="_menu.jsp"></jsp:include>
+      <jsp:include page="/WEB-INF/views/_menunologin.jsp"></jsp:include>
       
    
-    <h3>User Deleted</h3>
+    <h3>Employee Deleted</h3>
 
-    <a href="LRLServlet?action=showAllUsers">User List</a>
+    <a href="LRLServlet?action=showAllUsers">Employee List</a>
    
    
  </body>

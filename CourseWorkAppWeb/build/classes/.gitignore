@@ -1,4 +1,3 @@
-/consumer/
+/application/
+/filter/
 /servlet/
-/DBUtils.class
-/utils/

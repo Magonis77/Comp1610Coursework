@@ -5,12 +5,12 @@
 <html>
  <head>
     <meta charset="UTF-8">
-    <title>Users List</title>
+    <title>Employee List</title>
  </head>
  <body>
-      <jsp:include page="_menu.jsp"></jsp:include>
+     <jsp:include page="/WEB-INF/views/_menunologin.jsp"></jsp:include>
       
-    <h3>Users List</h3>
+    <h3>Employee List</h3>
 
 
     <table border="1" cellpadding="5" cellspacing="1" >
@@ -22,8 +22,6 @@
           <th>Last Name</th>
           <th>Gender</th>
           <th>Join Date</th>
-          <th>Role ID</th>
-          <th>Department ID</th>
           <th>Edit</th>
           <th>Delete</th>
        </tr>
@@ -36,8 +34,6 @@
              <td>${user.lastname}</td>
              <td>${user.gender}</td>
              <td>${user.joinDate}</td>
-             <td></td>
-             <td></td>
              <td>
                 <a href="edituser?code=${user.id}">Edit</a>
              </td>
@@ -48,7 +44,7 @@
        </c:forEach>
     </table>
 
-    <a href="LRLServlet?action=register" >Create User</a>
+    <a href="LRLServlet?action=register" >Create Employee</a>
 
 
  </body>

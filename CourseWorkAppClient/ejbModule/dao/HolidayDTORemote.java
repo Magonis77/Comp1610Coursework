@@ -24,4 +24,7 @@ public interface HolidayDTORemote {
 	List<HolidaysDTO> allOutstandingHolidays(String status);
 
 	List<HolidaysDTO> countuserlenght(int user);
+
+
+	List<HolidaysDTO> allOutstandingHolidayswcontrain(String status, int i);
 }

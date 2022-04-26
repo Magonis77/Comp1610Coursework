@@ -9,7 +9,7 @@
 <html>
    <head>
       <meta charset="UTF-8">
-      <title>Edit User</title>
+      <title>Edit Employee</title>
    </head>
    <body>
    <%
@@ -21,9 +21,9 @@
 	List<DepartmentsDTO> departmentlist = (List<DepartmentsDTO>) session.getAttribute("departmentlist");
 	
 	%>
-       <jsp:include page="_menu.jsp"></jsp:include>
+       <jsp:include page="/WEB-INF/views/_menunologin.jsp"></jsp:include>
       
-      <h3>Edit User</h3>
+      <h3>Edit Employee</h3>
       
       <p style="color: red;">${errorString}</p>
       

@@ -34,6 +34,7 @@ public class holidayaccept extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    //gets the information from JSP file and passes to the DTO then redirects
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String code = (String) request.getParameter("code");
 		

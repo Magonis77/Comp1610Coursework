@@ -55,6 +55,7 @@ public class HolidaysServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    //gets the information from JSP file and passes to the DTO then redirects
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String param_action = request.getParameter("action");
 		String tableStr = new String();
@@ -75,10 +76,10 @@ public class HolidaysServlet extends HttpServlet {
 		case "getalloutstandingholidays":{
 			String Status = "Outstanding";
 			List<HolidaysDTO> holidaylist = hDTO.allOutstandingHolidays(Status);
-				
+			List<HolidaysDTO> holidaylistwconstraint = hDTO.allOutstandingHolidayswcontrain(Status, 1);
 			HttpSession session = request.getSession();
 			session.setAttribute("holidaylist", holidaylist);
-
+			session.setAttribute("holidaylistwconstraint", holidaylistwconstraint);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/OutstandingHolidaysView.jsp");
 			dispatcher.forward(request, response);
 		}

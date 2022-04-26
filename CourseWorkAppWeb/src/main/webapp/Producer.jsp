@@ -7,7 +7,7 @@
 <title>Request a Holiday</title>
 </head>
 <body>
-  <jsp:include page="/WEB-INF/views/_menu.jsp"></jsp:include>
+  <jsp:include page="/WEB-INF/views/_menunologin.jsp"></jsp:include>
 <strong>Request a holiday below</strong>
 <br/>
 <br/>

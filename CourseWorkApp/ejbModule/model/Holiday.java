@@ -15,9 +15,12 @@ import java.util.Date;
 		{
 @NamedQuery(name="Holiday.findAll", query="SELECT h FROM Holiday h"),
 @NamedQuery(name="Holiday.findHolidaysByUserID", query="Select h from Holiday h Where h.user.id=:id"),
-@NamedQuery(name="Holiday.findOutstandingHolidays", query="Select h from Holiday h Where h.status=:status order by h.peak_Time,h.overall_Length"),
+@NamedQuery(name="Holiday.findOutstandingHolidays", query="Select h from Holiday h Where h.status=:status and h.contraintbreak=:cid order by h.peak_Time,h.overall_Length"),
+@NamedQuery(name="Holiday.findHolidaysByUserIDandstatus", query="Select h from Holiday h Where h.user.id=:id and h.status=:status"),
+@NamedQuery(name="Holiday.findOutstandingHolidayswconstraint", query="Select h from Holiday h Where h.status=:status and h.contraintbreak=:cid"),
 		}
 		)
+
 public class Holiday implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -26,6 +29,8 @@ public class Holiday implements Serializable {
 	private int id;
 
 	private String constraints;
+
+	private int contraintbreak;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="`Date Decision Made`")
@@ -74,6 +79,14 @@ public class Holiday implements Serializable {
 
 	public void setConstraints(String constraints) {
 		this.constraints = constraints;
+	}
+
+	public int getContraintbreak() {
+		return this.contraintbreak;
+	}
+
+	public void setContraintbreak(int contraintbreak) {
+		this.contraintbreak = contraintbreak;
 	}
 
 	public Date getDate_Decision_Made() {

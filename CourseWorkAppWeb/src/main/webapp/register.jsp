@@ -15,10 +15,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Register User</title>
+<title>Register Employee</title>
 </head>
 <body>
-      <jsp:include page="/WEB-INF/views/_menu.jsp"></jsp:include>
+     <jsp:include page="/WEB-INF/views/_menunologin.jsp"></jsp:include>
       
 	<%
 	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");  

@@ -3,7 +3,6 @@
    
 <div style="padding: 5px;">
 
-<a href="login.jsp">Login</a>|
 <a href="LRLServlet?action=register">Register</a>|
 <a href='LRLServlet?action=showAllUsers'>Show Employee List</a>|
 <a href='HolidaysServlet?action=getallholidays'>Holiday List Admin</a>|

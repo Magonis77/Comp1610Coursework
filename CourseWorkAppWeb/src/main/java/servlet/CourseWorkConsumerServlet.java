@@ -30,6 +30,7 @@ public class CourseWorkConsumerServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String tableStr = new String();
 		AdsConsumer ads = new AdsConsumer();

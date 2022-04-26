@@ -25,7 +25,7 @@ if (request.getParameter("cbxUser") != null) {
 	List<UserDTO> userlist = (List<UserDTO>) session.getAttribute("userlist");
 	
 	%>
-    <jsp:include page="_menu.jsp"></jsp:include>
+    <jsp:include page="/WEB-INF/views/_menunologin.jsp"></jsp:include>
 
     <h3>Holiday List</h3>
 
@@ -55,7 +55,7 @@ if (request.getParameter("cbxUser") != null) {
        </c:forEach>
     </table>
 <form action="HolidayByUserA.jsp" method = "post">
-         Select a User:&nbsp; <select name="cbxUser" style="width: 200px">
+         Select an Employee:&nbsp; <select name="cbxUser" style="width: 200px">
 			<c:forEach items="${userlist}" var="user">
 				<option value="${user.id}">${user.username}</option>
 			</c:forEach>

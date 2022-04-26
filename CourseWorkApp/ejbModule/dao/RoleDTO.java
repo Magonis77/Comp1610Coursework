@@ -28,6 +28,7 @@ public class RoleDTO implements RoleDTORemote {
     public RoleDTO() {
         // TODO Auto-generated constructor stub
     }
+    //get all roles and pases to the web
     public List<RolesDTO> allRoles() {
     	List<Drole> queryResults = em.createQuery("SELECT d FROM Drole d").getResultList();
     	List<RolesDTO> listRole = new ArrayList<RolesDTO>();
