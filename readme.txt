@@ -1,11 +1,10 @@
 1. Download XAMPP Control Panel
 2. Start apache + mySQL
 3. press Admin on mysql
-4. Add the Coursework.sql file in import.
-5. Open standalone-full.xml file for the wildfly server.
-6. Add following code under the Programming enterprise </datasource>
-7. Name the SQL database  - Coursework
-8. Do the tutorial for program enterprise week 4 "Accessing the DB" to setup the server and make prototype work.
+4. create database named coursework 
+5. Add the Coursework.sql file in import.
+6. Open standalone-full.xml file for the wildfly server.
+7. Add following code under the Programming enterprise </datasource>
 :
 :
 Add this:
@@ -21,3 +20,7 @@ Add this:
                         <validate-on-match>true</validate-on-match>
                         <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter"/>
                     </validation>
+
+8. Setup a WildFly server and make sure to choose the updated standalone-full.xml
+
+9. If you have done it right you can now run the application.
